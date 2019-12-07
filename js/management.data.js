@@ -51,15 +51,20 @@ management.updatePos = function(pos, delta) {
 }
 
 management.updateValues = function() {
-    document.getElementById("valueA").innerText = management.sides[0];
-    document.getElementById("valueB").innerText = management.sides[1];
-    document.getElementById("valueC").innerText = management.sides[2];
-    document.getElementById("valueD").innerText = management.sides[3];
+    var fRound = function(val) {
+	val /= management.defaultPos;
+	return val.toExponential(6);
+    }
+    document.getElementById("valueA").innerText = fRound(management.sides[0]);
+    document.getElementById("valueB").innerText = fRound(management.sides[1]);
+    document.getElementById("valueC").innerText = fRound(management.sides[2]);
+    document.getElementById("valueD").innerText = fRound(management.sides[3]);
 }
 
 management.initSides = function() {
     var pos = 70;
     management.sides = [pos, pos, pos, pos];
+    management.defaultPos = pos;
 }
 
 management.radius = 10;
